@@ -9,7 +9,7 @@ public class Base {
     private WebDriverWait wait;
 
     public Base() {
-        System.setProperty("driver","");
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\YILMAZ ANIL\\Downloads\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 20);
     }
@@ -18,7 +18,7 @@ public class Base {
         driver.manage().window().maximize();
     }
     public void after(){
-        driver.quit();
+       // driver.quit();
     }
 
     public WebDriver getDriver() {
