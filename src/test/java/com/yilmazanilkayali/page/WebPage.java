@@ -10,22 +10,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.function.Function;
 
-public class HomePage {
+public abstract class WebPage {
     private WebDriver webDriver;
     private Wait<WebDriver> wait;
-    private By signInButton = By.className("header-icon-label");
-    public HomePage(WebDriver webDriver) {
+    public WebPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         wait = new WebDriverWait(webDriver,30);
         PageFactory.initElements(this.webDriver,this);
         waitForPageLoad();
 
     }
-
-    public  WebElement signIn(){
-        return webDriver.findElement(signInButton);
+    public WebElement getElement(By by){
+        return webDriver.findElement(by);
     }
-    private void waitForPageLoad(){
+    protected void waitForPageLoad(){
         wait.until(new Function<WebDriver, Boolean>() {
             public Boolean apply(WebDriver driver) {
                 return String
@@ -33,5 +31,9 @@ public class HomePage {
                         .equals("complete");
             }
         });
+    }
+
+    public WebDriver getDriver() {
+        return webDriver;
     }
 }
