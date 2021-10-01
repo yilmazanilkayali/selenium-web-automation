@@ -34,4 +34,3 @@ public class SearchResultPage extends WebPage {
     }
 }
 
-///19tek beden
